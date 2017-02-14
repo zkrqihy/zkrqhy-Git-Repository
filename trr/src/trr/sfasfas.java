@@ -7,5 +7,9 @@ public class sfasfas {
 	///sdfsdfasfasfd
 	public static void main(String[] args){
 		System.out.println("wwwwww");
+		System.out.println("wwwwww");
+		System.out.println("wwwwww");
+		System.out.println("wwwwww");
+		System.out.println("wwwwww");
 	}
 }
