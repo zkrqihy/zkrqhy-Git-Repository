@@ -9,6 +9,6 @@ public class sfasfas {
 		System.out.println("wwwwww");
 		System.out.println("wwwwww");
 		System.out.println("wwwwww");
-		System.out.println("wwwwww");
+	
 	}
 }
