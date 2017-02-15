@@ -1,6 +1,6 @@
 package trr;
 
-public class sfasfas {
+public class ssss {
 	
 	private String a;
 	
