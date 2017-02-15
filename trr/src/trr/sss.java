@@ -1,5 +1,5 @@
 package trr;
 
 public class sss {
-	private int ss;
+	private int bb;
 }
