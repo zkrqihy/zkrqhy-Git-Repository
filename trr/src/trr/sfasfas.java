@@ -2,6 +2,6 @@ package trr;
 
 public class sfasfas {
 	
-	private int onr;
+	private int onr2;
 
 }
