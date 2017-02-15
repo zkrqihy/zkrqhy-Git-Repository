@@ -8,6 +8,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello Maven!" );
+        String sfas;
+        System.out.println( "Hello Mavenada!" );
     }
 }
