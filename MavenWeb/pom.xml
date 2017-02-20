@@ -68,8 +68,7 @@
   				<!-- 指定web.xml文件的位置 -->
   				<!-- <webXml>webapp\WEB-INF\web.xml</webXml>
   				<warSourceDirectory>webapp</warSourceDirectory> -->
-  				
-  				<failOnMissingWebXml>false</failOnMissingWebXml>
+  				<!-- <failOnMissingWebXml>false</failOnMissingWebXml> -->
   				<!-- 改配置用于控制：对于其他项目引用改项目war包时，是否会自动将classes下面的文件打成jar包来使用 -->
   				<archiveClasses>false</archiveClasses>
   				<!-- 控制打包时，是否打一个jar包到私服上，用于其他项目调试编译用 -->

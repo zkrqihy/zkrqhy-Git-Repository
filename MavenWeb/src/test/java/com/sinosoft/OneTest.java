@@ -2,7 +2,7 @@ package com.sinosoft;
 
 import org.junit.Test;
 
-public class TestOne {
+public class OneTest {
 
 	@Test
 	public void qq(){
