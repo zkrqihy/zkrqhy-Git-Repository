@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+   	
+   
+		
+    <!-- 外部配置文件 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	<!-- 扫描注解 -->
+	<context:component-scan base-package="com.sinosoft.sys.service"></context:component-scan>
+	<!-- 事务逻辑 -->
+	<tx:annotation-driven transaction-manager="tx"/>	
+	<!-- 链接 -->
+	<bean id="pool" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="maxActive" value="${jdbc.maxSize}"></property>
+		<property name="initialSize" value="${jdbc.minSize}"></property>
+		<property name="maxWait" value="${jdbc.maxWait}"></property>
+	</bean>
+	<!-- sqlSessionFactory的bean -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="pool"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<property name="typeAliasesPackage" value="com.sinosoft.sys.schema"></property><!-- 给实体定义路径，mybatis在配置中可直接写类名 -->
+		<property name="mapperLocations">
+			<list><value>classpath:com/sinosoft/sys/dao/*.xml</value></list>
+		</property>
+	</bean>
+	<!-- DAO实现类 并自动注入所有dao-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sinosoft.sys.dao"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>		
+	</bean>
+	<!-- 事务逻辑 -->
+	<bean id="tx" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="pool"></property>
+	</bean>
+	
+</beans>
+ 	
+  	
